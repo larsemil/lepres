@@ -11,4 +11,9 @@ Here are some of the features:
 
 for now the backend is finnished and the main focus now should be on the jquery controler. 
 
-But something must be bad about this: YES! You have to know how to code html and css to be able to get anything betterlooking then a old webpage from 99. Of course the plan is to have a default layout that will do for most presentations. 
+But something must be bad about this: YES! You have to know how to code html and css to be able to get anything betterlooking then a old webpage from 99. Of course the plan is to have a default layout that will do for most presentations.
+
+
+
+ALSO: 
+Before i started on this project i tried playing around with showoff in ruby, but never got it to work on my system, so instead i made this. I got the inspiration from there so KUDOS to https://github.com/schacon/showoff 

@@ -1,13 +1,20 @@
+var allSlides =  new Array();
+var currentPage = 0;
+
 $.getJSON("../order.json", function (data) {
-	//kolla vart i loopen vi är.
-	//kolla vilken som är nästa
-	//kolla vilken som är förra
+	var currentUrl = window.location.pathname;
+	var currentFilename = currentUrl.substring(currentUrl.lastIndexOf('/') +1);
+
+	currentFilename = currentFilename.slice(0,-5);
 
 	$.each(data, function (counter, page) {
-		console.log(page)
-
+		if(page.page == currentFilename)
+		{	
+			currentPage = counter	
+		}
+		allSlides[counter] = page.page;
+		
 	});
-
 });
 
 
@@ -15,13 +22,39 @@ $.getJSON("../order.json", function (data) {
 
 function slideBack()
 {
-	console.log("sliding backward");
+	if(currentPage - 1 in allSlides)
+	{
+		currentPage--;
+		console.log("sliding backward to " + allSlides[currentPage]);
+		
+		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html #slide';
+	    $("#slide").load(url, function( data ){
+			console.log('Got slide from ' + url);
 
+		});
+	}
+	else
+	{
+		console.log("ERROR, you are at start of presentation.");
+	}
 }
 
 function slideForward()
 {
-	console.log("sliding forward"); 
+	if(currentPage + 1 in allSlides)
+	{
+		currentPage++;
+		console.log("sliding forward to " + allSlides[currentPage]);
+		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html #slide';
+	    $("#slide").load(url, function( data ){
+			console.log('Got slide from ' + url);
+
+		});
+	}
+	else
+	{
+		console.log("ERROR, you have reached the end of the presentation");
+	}
 }
 
 $(document.documentElement).keyup(function (event) {
