@@ -1,0 +1,14 @@
+I was sitting at home planning a presentation i was going to hold. Opened up a powerpoint and started and thought - hey, i am a webdeveloper and i am really bad at this. Why dont i make something in html instead. So i started. Only then did i realise that it would take a heck load of work to get the presentation to work the way i wanted and that i would probably be far better of with something that could help me.
+Hence lepres was born. 
+
+lepres is a framework for creating html5 presentations. It uses jquery as controller(like switching slides etc). Mainly it creates new pages, and keeps record in what order they are to be displayed. 
+
+Here are some of the features:
+* Individual css for each slide.
+* Individual javascript for each slide.
+* Include the latest webtechnologies there are, directly in your slide
+* Youtube, html5video / audio. Everything is easily included on your slide.
+
+for now the backend is finnished and the main focus now should be on the jquery controler. 
+
+But something must be bad about this: YES! You have to know how to code html and css to be able to get anything betterlooking then a old webpage from 99. Of course the plan is to have a default layout that will do for most presentations. 
