@@ -445,12 +445,12 @@ body{
 
 }
 
-h1{font-size: 3em; }
+h1{font-size: 3em; margin-bottom: 5px;  }
 
 #slide
 {
 	width: 1000px; 
 	margin: auto; 
-
+	-webkit-transform: translateZ(0);
 
 }

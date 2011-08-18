@@ -28,8 +28,10 @@ function slideBack()
 		console.log("sliding backward to " + allSlides[currentPage]);
 		
 		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html #slide';
-	    $("#slide").load(url, function( data ){
+		$("#slide").hide();
+	    $("#slide").load(url, null, function( data ){
 			console.log('Got slide from ' + url);
+			$('#slide').show("fast");
 
 		});
 	}
@@ -46,8 +48,10 @@ function slideForward()
 		currentPage++;
 		console.log("sliding forward to " + allSlides[currentPage]);
 		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html #slide';
-	    $("#slide").load(url, function( data ){
+		$('#slide').hide();
+	    $("#slide").load(url,null, function( data ){
 			console.log('Got slide from ' + url);
+			$('#slide').show({duration: 'fast',  "easing" : 'swing'});
 
 		});
 	}
