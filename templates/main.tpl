@@ -9,10 +9,14 @@
 	</head>
 
 	<body>
+	<section id="slide">
 
 
 
 
+	</section>
+	<script language="JavaScript" SRC="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script language="JavaScript" SRC="../controls.js"></script>
 
 	</body>
 </html>
