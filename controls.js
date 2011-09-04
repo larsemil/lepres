@@ -27,11 +27,13 @@ function slideBack()
 		currentPage--;
 		console.log("sliding backward to " + allSlides[currentPage]);
 		
-		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html #slide';
-		$("#slide").hide();
-	    $("#slide").load(url, null, function( data ){
+		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html';
+		var stateObj = {url: url};
+		history.pushState(stateObj, 'page', url);
+		$("body").hide();
+	    $("body").load(url, null, function( data ){
 			console.log('Got slide from ' + url);
-			$('#slide').show("fast");
+			$('body').show("fast");
 
 		});
 	}
@@ -47,11 +49,13 @@ function slideForward()
 	{
 		currentPage++;
 		console.log("sliding forward to " + allSlides[currentPage]);
-		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html #slide';
-		$('#slide').hide();
-	    $("#slide").load(url,null, function( data ){
+		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html';
+		var stateObj = {url: url};
+		history.pushState(stateObj, 'page', url);
+		$('body').hide();
+	    $("body").load(url,null, function( data ){
 			console.log('Got slide from ' + url);
-			$('#slide').show({duration: 'fast',  "easing" : 'swing'});
+			$('body').show({duration: 'fast',  "easing" : 'swing'});
 
 		});
 	}

@@ -438,14 +438,29 @@ table {
     border-spacing: 0;
 }
 
+/* ==========================================================================
+	Typ sån här sidspecifika saker.
+=================================================================== */
+@font-face{
+	font-family: "Antic Regular"; 
+	src: url(Antic-Regular.ttf);
 
+}
+@font-face{
+	font-family: "Prociono"; 
+	src: url(Prociono-Regular.ttf);
+
+}
 body{
 	background-color: #333; 
 	font-size: 30px; 
-
+	background-image: url('bg.png') ;
+	font-family: Prociono
 }
 
-h1{font-size: 3em; margin-bottom: 5px;  }
+h1{font-size: 4em; margin-bottom: 5px; font-family: "Antic Regular"; text-shadow: #777 1px 1px 10px; letter-spacing: 5px;  }
+
+h2{margin: 0 0 10px 0; font-size: 0.8em;  }
 
 #slide
 {
@@ -454,3 +469,13 @@ h1{font-size: 3em; margin-bottom: 5px;  }
 	-webkit-transform: translateZ(0);
 
 }
+
+#box {margin-top: 50px; }
+#rightbox{float: right; width: 370px; padding: 10px;   }
+a, a:hover, a:visited{color: #333; letter-spacing: 3px; text-decoration: none; }
+ul li {font-size: 2em; list-style-type: circle; margin-top: 10px;   }
+ul li ul{margin: 0 }
+ul li ul li{font-size: 0.8em; }
+
+.alignleft{float: left;}
+.alignright{float:right; }
