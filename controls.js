@@ -1,23 +1,60 @@
 var allSlides =  new Array();
 var currentPage = 0;
+var urlStack = new Array(); 
 
-$.getJSON("../order.json", function (data) {
-	var currentUrl = window.location.pathname;
-	var currentFilename = currentUrl.substring(currentUrl.lastIndexOf('/') +1);
+$(document).ready(function() {
+	$.getJSON("../order.json", function (data) {
+		var currentUrl = window.location.pathname;
+		var currentFilename = currentUrl.substring(currentUrl.lastIndexOf('/') +1);
 
-	currentFilename = currentFilename.slice(0,-5);
+		currentFilename = currentFilename.slice(0,-5);
+	
+		$.each(data, function (counter, page) {
+			if(page.page == currentFilename)
+			{	
+				currentPage = counter	
+			}
+			allSlides[counter] = page.page;
 
-	$.each(data, function (counter, page) {
-		if(page.page == currentFilename)
-		{	
-			currentPage = counter	
-		}
-		allSlides[counter] = page.page;
-		
+		});
+		console.log(allSlides);
+	
 	});
 });
 
+function loadPage(url, history_search)
+{
+	console.log(currentPage);
+	if(!history_search)
+	{
+		var stateObj = {url: url};
+		history.pushState(stateObj, 'page', url);
+	} else {
+		var stackPosition = $.inArray(url, urlStack);
+		var direction;
+		if(currentPage > stackPosition)
+		{
+			direction = 'back';
+			currentPage = currentPage -1;
+		}
+		else {
+			direction = 'forward';
+			currentPage = currentPage + 1;
 
+		}
+
+
+	}
+		$('body').hide();
+		
+	    $('body').load(url , null, function( data ){
+			
+			$('body').show('fast');
+
+		});
+
+
+}
 
 
 function slideBack()
@@ -25,17 +62,9 @@ function slideBack()
 	if(currentPage - 1 in allSlides)
 	{
 		currentPage--;
-		console.log("sliding backward to " + allSlides[currentPage]);
 		
 		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html';
-		var stateObj = {url: url};
-		history.pushState(stateObj, 'page', url);
-		$("body").hide();
-	    $("body").load(url, null, function( data ){
-			console.log('Got slide from ' + url);
-			$('body').show("fast");
-
-		});
+		loadPage(url); 
 	}
 	else
 	{
@@ -48,16 +77,8 @@ function slideForward()
 	if(currentPage + 1 in allSlides)
 	{
 		currentPage++;
-		console.log("sliding forward to " + allSlides[currentPage]);
 		var url = '../' + allSlides[currentPage] + '/' + allSlides[currentPage] + '.html';
-		var stateObj = {url: url};
-		history.pushState(stateObj, 'page', url);
-		$('body').hide();
-	    $("body").load(url,null, function( data ){
-			console.log('Got slide from ' + url);
-			$('body').show({duration: 'fast',  "easing" : 'swing'});
-
-		});
+		loadPage(url);
 	}
 	else
 	{
